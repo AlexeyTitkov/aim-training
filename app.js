@@ -5,7 +5,22 @@ const timeEl = document.querySelector('#time')
 const board = document.querySelector('.board')
 colors = ['#696969', '#556B2F', '#8B008B', '#2E8B57', '#A0522D', '#9932CC', '#8B4513', '#483D8B', '#5F9EA0', '#800000']
 let time = 0
+let selectedTime = 0
+let intervalId;
 let score = 0
+
+
+function togglePrimaryClass() {
+  startBtn.classList.toggle('primary');
+}
+
+setInterval(togglePrimaryClass, 1000);
+
+startBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  // Здесь можно добавить дополнительный код для начала игры
+});
+
 startBtn.addEventListener('click', (event) => {
   event.preventDefault()
   screens[0].classList.add('up')
@@ -16,6 +31,7 @@ timeList.addEventListener('click', event => {
     time = parseInt(event.target.getAttribute('data-time'))
     screens[1].classList.add('up')
     startGame()
+    return selectedTime = time
   }
 })
 
@@ -28,7 +44,7 @@ board.addEventListener('click', (event) => {
 })
 
 function startGame() {
-  setInterval(decreaseTime, 1000)
+  intervalId = setInterval(decreaseTime, 1000);
   createRandomCircle()
   setTime(time)
 }
@@ -51,8 +67,16 @@ function setTime(value) {
 
 function finishGame() {
   timeEl.parentNode.classList.add('hide')
-  board.innerHTML = `<h1>Your score: <scan class="primary">${score}</scan></h1>`
+  board.innerHTML = `
+     <h2>GAME OVER
+      <br>
+     Your score: <span class="primary">${score}</span></h2>
+    <button class="btn try-again">TRY AGAIN</button>
+    <br>
+    <button class="btn reset"">RESET</button>`;
+  gameOverScreenHandler()
 }
+
 
 function createRandomCircle() {
   const circle = document.createElement('div')
@@ -71,7 +95,6 @@ function createRandomCircle() {
   
 
   board.append(circle)
-  debugger
 }
 
 function getRandomNumber(min, max) {
@@ -86,4 +109,36 @@ function setColor(element) {
 function getRandomColor() {
   const index = Math.floor(Math.random()  *  colors.length)
   return colors[index]
+}
+
+
+function gameOverScreenHandler() {
+    const tryAgainBtn = document.querySelector('.try-again');
+    const resetBtn = document.querySelector('.reset');
+
+    tryAgainBtn.addEventListener('click', tryAgain);
+    resetBtn.addEventListener('click', resetGame);
+}
+
+function tryAgain() {
+  clearInterval(intervalId); // Очистка интервала
+  screens[2].classList.remove('hide');
+  time = selectedTime;
+  score = 0;
+  board.innerHTML = '';
+  timeEl.parentNode.classList.remove('hide');
+  startGame();
+}
+
+function resetGame() {
+  clearInterval(intervalId); // Очистка интервала
+  board.innerHTML = '';
+  screens[2].classList.remove('hide');
+  time = 0;
+  score = 0;
+  screens[0].classList.remove('up');
+  screens[1].classList.remove('up');
+  timeEl.parentNode.classList.remove('hide');
+  board.innerHTML = '';
+  setTime('00:00');
 }

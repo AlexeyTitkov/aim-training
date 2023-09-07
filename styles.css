@@ -5,7 +5,7 @@
 }
 
 body {
-  color: #fff;
+  color: #eaeaea;
   font-family: "Khula", sans-serif;
   height: 100vh;
   overflow: hidden;
@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #fff;
+  color: #eaeaea;
   text-decoration: none;
 }
 
@@ -23,12 +23,48 @@ a:hover {
 }
 
 .start {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 
 h1 {
+  color: #000000;
   line-height: 1.4;
   font-size: 4rem;
+}
+
+h2 {
+  color: #000000;
+  line-height: 1.4;
+  font-size: 4rem;
+  margin: 20px;
+}
+
+h3 {
+  color: #000000;
+  line-height: 1.4;
+  font-size: 4rem;
+  margin: 0;
+}
+
+.btn {
+  color: #eaeaea;
+  background-color: transparent;
+  border: 2px solid #eaeaea;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  border: 2px solid #16d9e3;
+  color: #16d9e3;
+}
+
+.aim-img{
+  max-width: 250px;
+  max-height: 250px;
+  margin-bottom: 20px;
 }
 
 .screen {
@@ -39,7 +75,7 @@ h1 {
   height: 100vh;
   width: 100vw;
   transition: margin 0.5s ease-out;
-  background: linear-gradient(90deg, #29323c 0%, #485563 100%);
+  background: linear-gradient(#a9a9a9, #485563);
 }
 
 .screen.up {
@@ -58,21 +94,6 @@ h1 {
   margin: 10px;
 }
 
-.time-btn {
-  background-color: transparent;
-  border: 2px solid #c0c0c0;
-  color: #fff;
-  cursor: pointer;
-  font-family: inherit;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-}
-
-.time-btn:hover {
-  border: 2px solid #16d9e3;
-  color: #16d9e3;
-}
-
 .hide {
   opacity: 0;
 }
@@ -83,13 +104,14 @@ h1 {
 
 .board {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 500px;
   height: 500px;
-  background: linear-gradient(118.38deg, #29323c -4.6%, #485563 200.44%);
-  box-shadow: -8px -8px 20px #2a333d, 10px 7px 20px #475462;
+  background: linear-gradient(#8d8c8c, #7a8793);
+  box-shadow: -8px -8px 20px #605f5f, 10px 7px 20px #3a3a3a;
   border-radius: 30px;
   overflow: hidden;
 }

@@ -4,37 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Aim Training | Проект 5</title>
+    <title>AIM Training</title>
   </head>
   <body>
     <div class="screen">
-      <h1>Aim Training</h1>
-      <a href="#" class="start" id="start">Start Game</a>
+      <img class="aim-img" src="https://i.ibb.co/CWFTzSx/aim.png" alt="aim">
+      <h1>AIM Training</h1>
+      <a href="#" class="start" id="start">Start GAME</a>
     </div>
 
     <div class="screen">
-      <h1>Select time</h1>
+      <h1>Set TIME</h1>
       <ul class="time-list" id="time-list">
         <li>
-          <button class="time-btn"
+          <button class="btn time-btn"
                   data-time="10">
             10 sec
           </button>
         </li>
         <li>
-          <button class="time-btn"
+          <button class="btn time-btn"
                   data-time="20">
             20 sec
           </button>
         </li>
         <li>
-          <button class="time-btn"
+          <button class="btn time-btn"
                   data-time="30">
             30 sec
           </button>
         </li>
         <li>
-          <button class="time-btn"
+          <button class="btn time-btn"
                   data-time="40">
             40 sec
           </button>
@@ -43,7 +44,7 @@
     </div>
 
     <div class="screen">
-      <h3>Left <span id="time">00:00</span></h3>
+      <h2>Time left: <span id="time">00:00</span></h2>
       <div class="board" id="board"></div>
     </div>
     <script src="./app.js"></script>
