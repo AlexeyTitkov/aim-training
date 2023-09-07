@@ -66,11 +66,24 @@ function createRandomCircle() {
   circle.style.height = `${size}px`
   circle.style.top = `${x}px`
   circle.style.left = `${y}px`
-  circle.style.background = `linear-gradient(90deg, #16d9e3 0%, #30c7ec 47%, #46aef7 100%)`
+  circle.style.boxShadow = `inset rgb(0 0 0 / 31%) 0 0 9px 2px`
+  setColor(circle)
+  
 
   board.append(circle)
+  debugger
 }
 
 function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min)
+}
+
+function setColor(element) {
+  const color = getRandomColor()
+  element.style.backgroundColor = `${color}`
+}
+
+function getRandomColor() {
+  const index = Math.floor(Math.random()  *  colors.length)
+  return colors[index]
 }
