@@ -3,12 +3,17 @@ const screens = document.querySelectorAll('.screen')
 const timeList = document.querySelector('#time-list')
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('.board')
-colors = ['#696969', '#556B2F', '#8B008B', '#2E8B57', '#A0522D', '#9932CC', '#8B4513', '#483D8B', '#5F9EA0', '#800000']
+const colors = ['#696969', '#556B2F', '#8B008B', '#2E8B57', '#A0522D', '#9932CC', '#8B4513', '#483D8B', '#5F9EA0', '#800000']
+const shotSound = document.getElementById('shot-sound');
 let time = 0
 let selectedTime = 0
 let intervalId;
 let score = 0
 
+function playShotSound() {
+  shotSound.currentTime = 0;
+  shotSound.play();
+}
 
 function togglePrimaryClass() {
   startBtn.classList.toggle('primary');
@@ -18,7 +23,6 @@ setInterval(togglePrimaryClass, 1000);
 
 startBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  // Здесь можно добавить дополнительный код для начала игры
 });
 
 startBtn.addEventListener('click', (event) => {
@@ -39,6 +43,7 @@ board.addEventListener('click', (event) => {
   if (event.target.classList.contains('circle')) {
     score++
     event.target.remove()
+    playShotSound();
     createRandomCircle()
   }
 })
